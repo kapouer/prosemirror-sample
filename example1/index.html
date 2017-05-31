@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<link rel="stylesheet" href="bundle.css">
+	<script src="bundle.js"></script>
+	<script>
+window.addEventListener('load', function() {
+	var dom = document.querySelector('.ProseMirror')
+	var list = document.createElement("div")
+	list.className = "list"
+	dom.appendChild(list)
+	var item = document.createElement("div")
+	item.className = "item"
+	//item.textContent = "X"
+	dom.querySelector(".list").appendChild(item)
+	setTimeout(function() {
+		if (!dom.querySelector('div.item')) throw new Error("Cannot find div.item");
+	}, 100);
+})
+	</script>
+</head>
+<body>
+</body>
+</html>
