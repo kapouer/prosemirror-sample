@@ -7,17 +7,20 @@ var marks = require("prosemirror-schema-basic").marks
 nodes.list = {
 	content: "item*",
 	group: "block",
-	parseDOM: [{tag: "div", attrs: {'class': 'list'}}],
+	parseDOM: [{tag: '[block-type="list"]', attrs: {'block-type': 'list'}}],
 	toDOM: function(node) {
-		return ["div", {'class': 'list'}, 0]
+		return ["div", {'block-type': 'list'}, 0]
 	}
 }
 
 nodes.item = {
 	isLeaf: true,
-	parseDOM: [{tag: "div", attrs: {'class': 'item'}}],
+	parseDOM: [{tag: '[block-type="item"]', attrs: {'block-type': 'item'}}],
 	toDOM: function(node) {
-		return ["div", {'class': 'item'}]
+		var dom = document.createElement('div')
+		dom.textContent = 'X'
+		dom.setAttribute('block-type', 'item');
+		return dom
 	}
 }
 document.addEventListener('DOMContentLoaded', function() {
