@@ -10,3 +10,6 @@ build-example2:
 	cp -f node_modules/prosemirror-view/style/prosemirror.css example2/bundle.css
 	$(BROWSERIFY) example2/main.js --outfile example2/bundle.js
 
+build-example3:
+	cp -f node_modules/prosemirror-view/style/prosemirror.css example3/bundle.css
+	$(BROWSERIFY) example3/main.js --outfile example3/bundle.js
