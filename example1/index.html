@@ -4,12 +4,12 @@
 	<meta charset="utf8">
 	<link rel="stylesheet" href="bundle.css">
 	<style>
-	[block-type="list"]:before {
+	.list:before {
 		content: 'list';
 		font-size:12px;
 		color:rgba(100, 100, 100, 0.5)
 	}
-	[block-type="item"]:before {
+	.item:before {
 		content: 'item';
 		font-size:12px;
 		color:rgba(100, 0, 100, 0.5)
@@ -19,23 +19,24 @@
 	<script>
 window.addEventListener('load', function() {
 	var dom = document.querySelector('.ProseMirror')
-	dom.insertAdjacentHTML('afterbegin', `
-		<div block-type="list"></div>
-	`)
+	var list = document.createElement('div')
+	list.className = 'list'
+	list.setAttribute('block', 'list')
+	dom.appendChild(list)
 	setTimeout(function() {
-		var list = dom.querySelector('[block-type="list"]')
+		var list = dom.querySelector('.list')
 		addItem(list)
 		addItem(list)
 		console.log("current html after addition", dom.outerHTML)
 		setTimeout(function() {
-			var nblists = dom.querySelectorAll('[block-type="list"]').length
+			var nblists = dom.querySelectorAll('.list').length
 			if (nblists != 1) throw new Error("Nb lists found: " + nblists)
 		}, 250)
 	}, 250)
 
 	function addItem(list) {
 		var item = document.createElement('div')
-		item.setAttribute('block-type', 'item')
+		item.className = 'item'
 		list.appendChild(item)
 	}
 })
