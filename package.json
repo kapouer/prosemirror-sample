@@ -1,11 +1,11 @@
 {
   "name": "prosemirror-sample",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "cp -f node_modules/prosemirror-view/style/prosemirror.css example1/bundle.css && browserify example1/main.js --outfile example1/bundle.js"
+    "prepare": "make build-examples"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,13 @@
     "url": "https://github.com/kapouer/prosemirror-sample/issues"
   },
   "homepage": "https://github.com/kapouer/prosemirror-sample#readme",
-  "devDependencies": {
-    "browserify": "^14.4.0",
-    "prosemirror-schema-basic": "^0.21.0",
-    "prosemirror-state": "^0.21.0",
-    "prosemirror-view": "^0.21.1"
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.5.0",
+    "prosemirror-model": "^1.0.1",
+    "prosemirror-schema-basic": "^1.0.0",
+    "prosemirror-state": "^1.0.2",
+    "prosemirror-view": "^1.0.5"
   }
 }

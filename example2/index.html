@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<link rel="stylesheet" href="bundle.css">
+	<style>
+	div.view {
+		border:1px solid red;
+	}
+
+	div.view > * {
+		display:inline-block;
+	}
+	div.view > .text {
+		background:#DFD;
+	}
+	</style>
+	<script src="bundle.js"></script>
+	<script>
+window.addEventListener('load', function() {
+	var editor = document.querySelector('.ProseMirror')
+	editor.insertAdjacentHTML('afterBegin', `<div class="view"><div class="text">test</div></div>`);
+});
+	</script>
+</head>
+<body>
+</body>
+</html>
