@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<link rel="stylesheet" href="bundle.css">
+	<style>
+	.item {
+		border: 1px solid black;
+		margin:0.2em;
+	}
+	.title > * {
+		display:inline-block;
+	}
+	.title > .text {
+		font-weight:bold;
+	}
+	.title > i {
+		font-size:0.8em;
+	}
+	.content {
+		padding-left:2em;
+	}
+	</style>
+	<script src="bundle.js"></script>
+	<script>
+window.addOne = function() {
+	window.editor.insertAdjacentHTML('afterBegin', `<div class="item">
+		<div class="title" contenteditable="false"><span class="text" contenteditable="true">TITLE</span></div>
+		<div class="content"><p>CONTENT</p></div>
+	</div>`);
+};
+
+	</script>
+</head>
+<body>
+	<div id="editor"></div>
+	<button onclick="window.addOne()">add item</button>
+</body>
+</html>
