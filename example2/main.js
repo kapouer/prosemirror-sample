@@ -8,11 +8,11 @@ var specs = {
 		content: 'text*',
 		parseDOM: [{tag: 'div.view'}],
 		toDOM: function(node) {
-			return ["div", {'class': 'view'}, ["div", {'class': 'text'}, 0]]
+			return ["div", {'class': 'view'}, ["span", {'class': 'text'}, 0]]
 		}
 	},
 	doc: {
-		content: 'testview*'
+		content: 'testview+'
 	}
 }
 
@@ -20,14 +20,15 @@ var views = {
 	testview: function(node, view, getPos, decorations) {
 		var dom = document.createElement('div')
 		dom.className = 'view'
-		var contentDOM = document.createElement('div')
+		dom.setAttribute('contenteditable', 'false')
+		var contentDOM = document.createElement('span')
 		contentDOM.className = 'text'
-		dom.innerHTML = '<div>€</div>'
+		dom.innerHTML = '<i>€</i>'
 		dom.appendChild(contentDOM)
+		contentDOM.setAttribute('contenteditable', 'true');
 		return {
 			dom: dom,
 			contentDOM: contentDOM,
-			content: "inline*",
 			update: function(node, decorations) { return true },
 			ignoreMutation: function(record) { return false }
 		}

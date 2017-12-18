@@ -19,7 +19,11 @@
 	<script>
 window.addEventListener('load', function() {
 	var editor = document.querySelector('.ProseMirror')
-	editor.insertAdjacentHTML('afterBegin', `<div class="view"><div class="text">test</div></div>`);
+	editor.insertAdjacentHTML('afterBegin', `
+		<div class="view"><span class="text">95.00</span></div>
+		<div class="view"><span class="text">50.00</span></div>
+		<div class="view"><span class="text">10.00</span></div>
+	`);
 });
 	</script>
 </head>
