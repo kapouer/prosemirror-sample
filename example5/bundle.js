@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	window.addItem = function () {
 		var tr = pm.state.tr;
-		tr.setSelection(State.TextSelection.create(tr.doc, 0));
+		tr.setSelection(State.TextSelection.create(tr.doc, tr.doc.content.size));
 		pm.dispatch(tr);
 		var item = document.createElement('div');
 		item.innerHTML = "<div class=\"title\" contenteditable=\"false\"><span class=\"text\" contenteditable=\"true\">TITLE</span></div><div class=\"content\"><p>CONTENT</p></div>";
