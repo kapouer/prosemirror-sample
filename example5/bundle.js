@@ -91,13 +91,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		EditorState: State.EditorState
 	});
 
+	var count = 1;
+
 	window.addItem = function () {
 		var tr = pm.state.tr;
 		tr.setSelection(State.TextSelection.create(tr.doc, tr.doc.content.size));
 		pm.dispatch(tr);
 		var item = document.createElement('div');
-		item.innerHTML = "<div class=\"title\" contenteditable=\"false\"><span class=\"text\" contenteditable=\"true\">TITLE</span></div><div class=\"content\"><p>CONTENT</p></div>";
-		pm.dom.insertBefore(item, pm.dom.firstChild);
+		item.innerHTML = "<div class=\"title\" contenteditable=\"false\"><span class=\"text\" contenteditable=\"true\">TITLE " + count + "</span></div><div class=\"content\"><p>CONTENT " + count + "</p></div>";
+		count++;
+		pm.dom.appendChild(item);
 	};
 });
 
