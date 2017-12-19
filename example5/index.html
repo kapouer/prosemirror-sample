@@ -22,15 +22,6 @@
 	}
 	</style>
 	<script src="bundle.js"></script>
-	<script>
-window.addOne = function() {
-	window.editor.insertAdjacentHTML('afterBegin', `<div class="item">
-		<div class="title" contenteditable="false"><span class="text" contenteditable="true">TITLE</span></div>
-		<div class="content"><p>CONTENT</p></div>
-	</div>`);
-};
-
-	</script>
 </head>
 <body>
 	<div id="editor"></div>
@@ -38,6 +29,6 @@ window.addOne = function() {
 		<li>First add an item</li>
 		<li>Then focus its content, then its title and type some char in the title</li>
 		<li>then add a second item: Invalid content for node item (see console)</li>
-	<button onclick="window.addOne()">add item</button>
+	<button onclick="window.addItem()">add item</button>
 </body>
 </html>

@@ -1,9 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var EditorState = require("prosemirror-state").EditorState;
+var State = require("prosemirror-state");
 var EditorView = require("prosemirror-view").EditorView;
-var Schema = require("prosemirror-model").Schema;
+var Model = require("prosemirror-model");
 
 var specs = {
 	text: {},
@@ -81,13 +81,21 @@ var views = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-	new EditorView(editor, {
-		state: EditorState.create({
-			schema: new Schema({ nodes: specs })
+	var pm = new EditorView(editor, {
+		state: State.EditorState.create({
+			schema: new Model.Schema({ nodes: specs })
 		}),
 		nodeViews: views
 	});
-	window.editor = editor.firstElementChild;
+
+	window.addItem = function () {
+		var tr = pm.state.tr;
+		tr.setSelection(State.TextSelection.create(tr.doc, 0));
+		pm.dispatch(tr);
+		var item = document.createElement('div');
+		item.innerHTML = "<div class=\"title\" contenteditable=\"false\"><span class=\"text\" contenteditable=\"true\">TITLE</span></div><div class=\"content\"><p>CONTENT</p></div>";
+		pm.dom.insertBefore(item, pm.dom.firstChild);
+	};
 });
 
 },{"prosemirror-model":3,"prosemirror-state":4,"prosemirror-view":6}],2:[function(require,module,exports){

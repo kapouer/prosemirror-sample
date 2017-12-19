@@ -1,6 +1,6 @@
-var EditorState = require("prosemirror-state").EditorState
+var State = require("prosemirror-state")
 var EditorView = require("prosemirror-view").EditorView
-var Schema = require("prosemirror-model").Schema
+var Model = require("prosemirror-model")
 
 var specs = {
 	text: {},
@@ -70,12 +70,20 @@ var views = {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	new EditorView(editor, {
-		state: EditorState.create({
-			schema: new Schema({nodes: specs})
+	var pm = new EditorView(editor, {
+		state: State.EditorState.create({
+			schema: new Model.Schema({nodes: specs})
 		}),
 		nodeViews: views
 	})
-	window.editor = editor.firstElementChild;
+
+	window.addItem = function() {
+		var tr = pm.state.tr
+		tr.setSelection(State.TextSelection.create(tr.doc, 0))
+		pm.dispatch(tr)
+		var item = document.createElement('div')
+		item.innerHTML = `<div class="title" contenteditable="false"><span class="text" contenteditable="true">TITLE</span></div><div class="content"><p>CONTENT</p></div>`
+		pm.dom.insertBefore(item, pm.dom.firstChild)
+	};
 })
 
