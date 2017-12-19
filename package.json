@@ -21,6 +21,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.5.0",
+    "prosemirror-dev-tools": "^2.0.1",
     "prosemirror-model": "^1.0.1",
     "prosemirror-schema-basic": "^1.0.0",
     "prosemirror-state": "^1.0.2",

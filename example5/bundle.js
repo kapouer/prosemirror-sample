@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}),
 		nodeViews: views
 	});
+	window.ProseMirrorDevTools.applyDevTools(pm, {
+		EditorState: State.EditorState
+	});
 
 	window.addItem = function () {
 		var tr = pm.state.tr;
