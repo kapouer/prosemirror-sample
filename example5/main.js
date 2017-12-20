@@ -34,7 +34,7 @@ var specs = {
 		}
 	},
 	doc: {
-		content: 'item*'
+		content: '(paragraph|item)+'
 	}
 }
 
@@ -74,6 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		state: State.EditorState.create({
 			schema: new Model.Schema({nodes: specs})
 		}),
+		dispatchTransaction: function(tr) {
+			console.trace("transaction", tr);
+			pm.updateState(pm.state.apply(tr));
+		},
 		nodeViews: views
 	})
 	window.ProseMirrorDevTools.applyDevTools(pm, {
